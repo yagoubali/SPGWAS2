@@ -81,20 +81,34 @@ fi
 
 optional_options="$use_GWASN $run_perm"
 #Performing the expression imputation
-Rscript ${bindir}/FUSION.assoc_test.R \
+{ Rscript ${bindir}/FUSION.assoc_test.R \
 --sumstats ${inputfile} \
 --weights ${dbdir}/WEIGHTS/${weights_pos} \
 --weights_dir ${dbdir}/WEIGHTS/${weights_dir} \
 --ref_ld_chr ${dbdir}/ldref/g1000_${ref_ld_chr}. \
 --chr ${chr} \
 --out ${outdir}/${chr}_${output1} \
-${optional_options}
+${optional_options} 
 
+if [ ! -f "${outdir}/${chr}_${output1}" ]; then
+  touch ${outdir}/${chr}_${output1}
+  echo " Please update your input options and try again..."
+fi
 
 cat ${outdir}/${chr}_${output1} | awk -v N="$numberOfSNPs" 'NR == 1 || $NF < 0.05/N' > ${outdir}/${chr}_top_${output1}
 
+} || {
+
+touch ${outdir}/${chr}_top_${output1}
+
+}
+
+if [ ! -f   "${outdir}/${chr}_top_${output1}" ]; then
+  touch ${outdir}/${chr}_top_${output1}
+fi
+
 linses=($(wc -l ${outdir}/${chr}_top_${output1}))
-if [ ${linses[0]} -gt 0 ]; then
+if [ ${linses[0]} -gt 2 ]; then
 Rscript ${bindir}/FUSION.post_process.R \
 --sumstats ${inputfile} \
 --input ${outdir}/${chr}_top_${output1} \
