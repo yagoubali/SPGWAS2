@@ -31,7 +31,7 @@ for tissue in "${single_tissues[@]}"; do
    fi
  done
  
-#Likely the disk you are extracting to is formatted FAT*. The FAT* filesystems do not allow : to appear in directory entries (filenames).
+#Any issue in tar is likely the disk you are extracting to is formatted FAT*. The FAT* filesystems do not allow : to appear in directory entries (filenames).
 # CMC.BRAIN.RNASEQ_SPLICING.tar.bz2 can not be extracted on fuse file format
 # need to reformat CMC.BRAIN.RNASEQ_SPLICING.pos
 
