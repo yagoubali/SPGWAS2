@@ -1,6 +1,0 @@
-wget -c http://gusevlab.org/projects/fusion/weights/sCCA_weights_v8_2.zip
-wget -c http://gusevlab.org/projects/fusion/weights/sCCA_weights_v6.zip
-
- sCCA+ACAT TWAS with Fusion (1,2) and ACAT (3).
- aggregate Cauchy association test (ACAT) 
- sparse canonical correlation analysis (sCCA).
