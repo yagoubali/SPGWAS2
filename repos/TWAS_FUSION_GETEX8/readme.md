@@ -92,6 +92,7 @@ The output file is a tab-delimited file (*chr*_GTex8_imputation.txt, *chr*_omnib
 - MODELCV.PV: cross-validation P-value of the best-performing model
 - TWAS.Z: TWAS Z-score (primary statistic of interest)
 - TWAS.P: TWAS P-value
+
 Besides the text files, the pipeline provides several plots in png format to visualize the correlation plot of the top expression imputation (chr_top_analysis_GTex8_imputation.dat.corrplot.png), and various plots for top locations of the expression imputation (chr_top_analysis_GTex8_imputation.dat.loc_*{N}*.png). 
 
 
