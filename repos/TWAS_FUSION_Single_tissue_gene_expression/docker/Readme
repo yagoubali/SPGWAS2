@@ -1,0 +1,27 @@
+### Docker scca
+docker build -t single_tissue .
+mkdir test1
+mkdir test2
+
+
+outdir1="FullPath/test1"
+outdir2="FullPath/test2"
+
+
+#adam
+#adam
+input_file="FullPath/PGC2.SCZ.sumstats"
+dbdir="FullPath/db"
+#hpc
+input_file="/home/gwas/pgwas2/testing/PGC2.SCZ.sumstats"
+dbdir="/media/yagoubali/bioinfo3/SPGWAS2/db"
+
+  
+  docker run --rm -it --name testing -v ${dbdir}:/db -v ${outdir1}:/home/outdir \
+ -v ${input_file}:/app/input.txt -v /app/scripts single_tissue bash /app/scripts/script.sh /app/input.txt /home/outdir \
+NTR.BLOOD.RNAARR eur 22 100000 0 0.5  0.7 2500 0 0
+
+
+docker run --rm -it --name testing -v ${dbdir}:/db -v ${outdir2}:/home/outdir \
+ -v ${input_file}:/app/input.txt -v /app/scripts single_tissue bash /app/scripts/script.sh /app/input.txt /home/outdir \
+  CMC.BRAIN.RNASEQ_SPLICING afr 22 100000 0 0.5  0.7 2500 0 100  0.05

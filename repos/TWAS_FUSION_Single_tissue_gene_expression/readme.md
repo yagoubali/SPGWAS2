@@ -1,6 +1,6 @@
-# GTEx cross-tissue sparse canonical correlation analysis (sCCA)
+# Single tissue gene expression
 
-This pipeline aims to perform transcriptome-wide and regulome-wide association tests (TWAS and RWAS) using the FUSION  tool (http://gusevlab.org/projects/fusion/). The user can use this tool to perform TWAS and RWAS analysis based on GTEx cross-tissue sparse canonical correlation analysis (sCCA) expression data from two versions of GTEx data: GTEx v8 and GTEx v6. The number of features in both versions is 37920. For more details, please refer to Feng, Helian, et al. “Leveraging expression from multiple tissues using sparse canonical correlation analysis (sCCA) and aggregate tests improves the power of transcriptome-wide association studies (TWAS).” 2021 PLOS Genetics.
+This pipeline aims to perform transcriptome-wide and regulome-wide association tests (TWAS and RWAS) using the FUSION  tool (http://gusevlab.org/projects/fusion/). The user can use this tool to perform TWAS and RWAS analysis based on single tissue expression of five tissues:  Peripheral Blood RNA array ("NTR.BLOOD.RNAARR"),  Whole blood	RNA array  ("YFS.BLOOD.RNAARR"), Adipose RNA-seq ("METSIM.ADIPOSE.RNASE"), Brain (DLPFC)	RNA-seq ("CMC.BRAIN.RNASEQ"), and  Brain (DLPFC)	RNA-seq splicing ("CMC.BRAIN.RNASEQ_SPLICING).  These expressions data were sourced from GTEx v7 with the following study code: CommonMind Consortium (CMC) Metabolic Syndrome in Men Study (METSIM), Netherlands Twin Registry (NTR), and the Cardiovascular Risk in Young Finns Study (YFS). 
 
 # Input data format
 This pipeline accepts  GWAS summary statistics as an input file. The input file should be headed with the following minimum fields:  
@@ -23,10 +23,18 @@ Users can set the following options:
 Total GWAS/sumstats sample size for inference of standard GWAS effect size (GWASN): This is an optional option. 
 - Maximum number of permutations to perform for each feature (perm_max_runs). The value of  0 means turns the permutations process off.	
 - Threshold to initiate permutation test: This option works only when the permutation process is on. The default value is 0.05.
-- sCCA files: This option has three values: 1, 2, and 3.  The values of 1 and 2  for performing sparse canonical correlation analysis (sCCA) and aggregate Cauchy association test (ACAT), i.e. sCCA+ACAT TWAS with Fusion, while option 3 performs only aggregate Cauchy association test. 
+
+
+# GTEx tissue
+ Users can choose one of the following 5 tissues:
+- Peripheral Blood	RNA array (NTR.BLOOD.RNAARR)
+- Whole blood	RNA array (YFS.BLOOD.RNAARR)  
+- Adipose	RNA-seq (METSIM.ADIPOSE.RNASE)  
+- Brain (DLPFC)	RNA-seq (CMC.BRAIN.RNASEQ)
+- Brain (DLPFC)	RNA-seq splicing (CMC.BRAIN.RNASEQ_SPLICING)
 
 # Output file:
-The output files are tab-delimited files (*chr*_sCCA_imputation.txt, *chr*_omnibus_sCCA_imputation.txt) containing  signals of transcriptome-wide significant associations  with the following fields:
+The output files are tab-delimited files (*chr*_single_tissue_imputation.txt, *chr*_omnibus_single_tissue_imputation.txt) containing  signals of transcriptome-wide significant associations  with the following fields:
 - FILE: Full path to the reference weight file used
 - ID: Feature/gene identifier, taken from --weights file
 - CHR: Chromosome
@@ -47,7 +55,7 @@ The output files are tab-delimited files (*chr*_sCCA_imputation.txt, *chr*_omnib
 - TWAS.P: TWAS P-value
 
 
-Besides the text files, the pipeline provides several plots in PDF format to visualize the correlation plot of the top expression imputation (chr_top_analysis_sCCA_imputation.dat.corrplot.png), and various plots for top locations of the expression imputation (chr_top_analysis_sCCA_imputation.dat.loc_{N}.png). 
+Besides the text files, the pipeline provides several plots in PDF format to visualize the correlation plot of the top expression imputation (chr_top_analysis_single_tissue_imputation.dat.corrplot.png), and various plots for top locations of the expression imputation (chr_top_analysis_single_tissue_imputation.dat.loc_*{N}*.png). 
 
 
 
