@@ -1,0 +1,27 @@
+### Docker scca
+docker build -t scca .
+mkdir test1
+mkdir test2
+
+
+outdir1="FULLPATH/test1"
+outdir2="FULLPATH/test2"
+
+
+#adam
+input_file="FULLPATH/PGC2.SCZ.sumstats"
+dbdir="FULLPATH/db"
+
+#hpc
+input_file="/home/gwas/pgwas2/testing/PGC2.SCZ.sumstats"
+dbdir="/media/yagoubali/bioinfo3/SPGWAS2/db"
+
+  
+  docker run --rm -it --name testing -v ${dbdir}:/db -v ${outdir1}:/home/outdir \
+ -v ${input_file}:/app/input.txt -v /app/scripts scca bash /app/scripts/script.sh /app/input.txt /home/outdir \
+Gtex_v8 afr 22 100000 0 0.5  0.7 2500 0 0 1
+
+
+docker run --rm -it --name testing -v ${dbdir}:/db -v ${outdir2}:/home/outdir \
+ -v ${input_file}:/app/input.txt -v /app/scripts scca bash /app/scripts/script.sh /app/input.txt /home/outdir \
+  Gtex_v8 afr 22 100000 0 0.5  0.7 2500 0 100  0.05 2
