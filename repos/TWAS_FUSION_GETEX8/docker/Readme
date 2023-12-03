@@ -1,0 +1,20 @@
+### Docker GETEX8
+docker build -t getex8 .
+mkdir test1
+mkdir test2
+
+dbdir="/media/yagoubali/bioinfo3/SPGWAS2/db"
+outdir="/media/yagoubali/bioinfo3/SPGWAS2/TWAS_FUSION_GETEX8/test1"
+outdir2="/media/yagoubali/bioinfo3/SPGWAS2/TWAS_FUSION_GETEX8/test2"
+input_file="/media/yagoubali/bioinfo3/SPGWAS2/PGC2.SCZ.sumstats"
+#input_file="/home/gwas/pgwas2/testing/PGC2.SCZ.sumstats"
+
+
+docker run --rm -it --name testing -v ${dbdir}:/db -v ${outdir}:/home/outdir \
+ -v ${input_file}:/app/input.txt -v /app/scripts getex8 bash /app/scripts/script.sh /app/input.txt /home/outdir \
+ Brain_Spinal_cord_cervical_c_1 eur 22 100000 0 0.5  0.7 2500 0 0 True
+
+
+docker run --rm -it --name testing -v ${dbdir}:/db -v ${outdir}:/home/outdir \
+ -v ${input_file}:/app/input.txt -v /app/scripts getex8 bash /app/scripts/script.sh /app/input.txt /home/outdir \
+  Cells_EBV_transformed_lymphocytes afr 22 100000 0 0.5  0.7 2500 0 100  0.05 False
