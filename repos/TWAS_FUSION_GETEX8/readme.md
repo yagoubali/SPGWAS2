@@ -1,4 +1,7 @@
+# GTEx v8 multi-tissue expression
+
 This pipeline aims to perform transcriptome-wide and regulome-wide association tests (TWAS and RWAS) using the FUSION  tool (http://gusevlab.org/projects/fusion/). The user can use this tool to perform TWAS and RWAS analysis based on  GTEx v8 multi-tissue expression. There are a total of 49 tissues and two options for each tissue: (i) significant heritability and (ii)  all genes. For typical analysis, significant heritability genes are recommended; however, using all genes increases sensitivity for non-European samples.
+
 # Input data format
 This pipeline accepts  GWAS summary statistics as an input file. The input file should be headed with the following minimum fields:  
 - SNP – SNP identifier (rsID)
@@ -20,6 +23,7 @@ Users can set the following options:
 - Total GWAS/sumstats sample size for inference of standard GWAS effect size (GWASN): This option is optional. 
 - Maximum number of permutations to perform for each feature (perm_max_runs). The value of  0 means it turns the permutations process off.	
 - Threshold to initiate permutation test: This option works only when the permutation process is on. The default value is 0.05.
+
 # GTEx tissue: Users can choose one of the following 49 tissues:
 - Adipose - Subcutaneous
 - Adipose - Visceral (Omentum)
