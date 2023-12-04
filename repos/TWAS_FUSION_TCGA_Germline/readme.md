@@ -1,6 +1,6 @@
-# TCGA Expression and junction 
+# The Cancer Genome Atlas (TCGA) tumor/normal expression
 
-This pipeline aims to perform transcriptome-wide and regulome-wide association tests (TWAS and RWAS) using the FUSION  tool (http://gusevlab.org/projects/fusion/). The user can use this tool to perform TWAS analysis based on TCGA Expression and junction from  Gusev et al. https://doi.org/10.1038/s41588-019-0395-x. Users can perform TWAS analysis using  10 tissues: 4 normal tissues and 6 cancerous tissues. 
+This pipeline aims to perform transcriptome-wide and regulome-wide association tests (TWAS and RWAS) using the FUSION  tool (http://gusevlab.org/projects/fusion/). The user can use this tool to perform TWAS and RWAS analysis based on expression from the Cancer Genome Atlas (TCGA) tumor/normal. These expression data were sourced from Germline gene expression models constructed from tumor RNA-seq. There are a total of 24 cancer types that can be used to perfom this analysis.
 
 # Input data format
 This pipeline accepts  GWAS summary statistics as an input file. The input file should be headed with the following minimum fields:  
@@ -27,20 +27,35 @@ Total GWAS/sumstats sample size for inference of standard GWAS effect size (GWAS
 
 # GTEx tissue
  Users can choose one of the following 10 tissues:
-- Ovarian normal FTSEC expression (OV.GE.NORMAL_FTSEC)
-- Ovarian normal OSEC expression	 (OV.GE.NORMAL_OSEC)
-- TCGA Ovarian tumor expression	 (TCGA_OV.GE.TUMOR)
-- TCGA Ovarian tumor junction	 (TCGA_OV.SP.TUMOR)
-- TCGA Breast normal expression	(TCGA_BRCA.GE.NORMAL) 
-- TCGA Breast normal junction	 (TCGA_BRCA.SP.NORMAL)
-- TCGA Breast tumor expression	 (TCGA_BRCA.GE.TUMOR)
-- TCGA Breast tumor junction	 (TCGA_BRCA.SP.TUMOR)
-- TCGA Prostate tumor expression	 (TCGA_PRAD.GE.TUMOR)
-- TCGA Prostate tumor junction	(TCGA_PRAD.SP.TUMOR) 
+- Bladder Urothelial Carcinoma	(TCGA_BLCA.TUMOR)
+- Breast Invasive Carcinoma	(TCGA_BRCA.TUMOR)
+- Cervical Squamous Cell Carcinoma	(TCGA_CESC.TUMOR)
+- Colon Adenocarcinoma	(TCGA_COAD.TUMOR)
+- Esophageal Carcinoma	(TCGA_ESCA.TUMOR)
+- Glioblastoma Multiforme	(TCGA_GBM.TUMOR)
+- Head and Neck Squamous Cell Carcinoma	(TCGA_HNSC.TUMOR)
+- Kidney Renal Clear Cell Carcinoma	(TCGA_KIRC.TUMOR)
+- Kidney Renal Papillary Cell Carcinoma	(TCGA_KIRP.TUMOR)
+- Brain Lower Grade Glioma	(TCGA_LGG.TUMOR)
+- Liver Hepatocellular Carcinoma	(TCGA_LIHC.TUMOR)
+- Lung Adenocarcinoma	(TCGA_LUAD.TUMOR)
+- Lung Squamous Cell Carcinoma	(TCGA_LUSC.TUMOR)
+- Ovarian Serous Cystadenocarcinoma	(TCGA_OV.TUMOR)
+- Pancreatic Adenocarcinoma	(TCGA_PAAD.TUMOR)
+- Pheochromocytoma and Paraganglioma	(TCGA_PCPG.TUMOR)
+- Prostate Adenocarcinoma	(TCGA_PRAD.TUMOR)
+- Rectum Adenocarcinoma	(TCGA_READ.TUMOR)
+- Soft Tissue Sarcoma	(TCGA_SARC.TUMOR)
+- Skin Cutaneous Melanoma	(TCGA_SKCM.TUMOR)
+- Stomach Adenocarcinoma	(TCGA_STAD.TUMOR)
+- Testicular Germ Cell Tumors	(TCGA_TGCT.TUMOR)
+- Thyroid Carcinoma	(TCGA_THCA.TUMOR)
+- Uterine Corpus Endometrial Carcinoma	(TCGA_UCEC.TUMOR)
+
 
 
 # Output file:
-The output files are tab-delimited files (*chr*_TCGA_Expression_and_junction_imputation.txt, *chr*_omnibus__TCGA_Expression_and_junction__imputation.txt) containing  signals of transcriptome-wide significant associations  with the following fields:
+The output files are tab-delimited files (*chr*__TCGA_germline__imputation.txt, *chr*_omnibus_TCGA_germline_imputation.txt) containing  signals of transcriptome-wide significant associations  with the following fields:
 - FILE: Full path to the reference weight file used
 - ID: Feature/gene identifier, taken from --weights file
 - CHR: Chromosome
@@ -61,7 +76,7 @@ The output files are tab-delimited files (*chr*_TCGA_Expression_and_junction_imp
 - TWAS.P: TWAS P-value
 
 
-Besides the text files, the pipeline provides several plots in PDF format to visualize the correlation plot of the top expression imputation (chr_top_analysis__TCGA_Expression_and_junction__imputation.dat.corrplot.png), and various plots for top locations of the expression imputation (chr_top_analysis__TCGA_Expression_and_junction__.dat.loc_*{N}*.pdf
+Besides the text files, the pipeline provides several plots in PDF format to visualize the correlation plot of the top expression imputation (chr_top_analysis__TCGA_germline__imputation.dat.corrplot.png), and various plots for top locations of the expression imputation (chr_top_analysis__TCGA_germline__.dat.loc_*{N}*.pdf
 
 
 
